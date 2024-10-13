@@ -46,7 +46,6 @@ git clone https://github.com/YangLing0818/SuperCorrect
 cd SuperCorrect
 conda create -n SuperCorrect python==3.10
 conda activate SuperCorrect
-cd eval
 pip install -r requirements.txt
 ```
 
