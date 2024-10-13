@@ -146,6 +146,75 @@ bash evaluation.sh $API_KEY $MODEL_NAME_OR_PATH
 
 ```
 
+To present more comprehensive evaluation, we compare Qwen2.5-Math-7B-Instruct and our SuperCorrect-7B on MATH benchmark using different open-source evaluation framework including [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) and [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math). You can follow the command below and the instruction of corresponding repo to reproduce the results.
+
+### lm-evaluation-harness
+
+```bash
+lm_eval --model hf \
+    --model_args pretrained="Qwen2.5-Math-7B-Instruct" \
+    --tasks minerva_math \
+    --log_samples \
+    --output_path Qwen2.5-Math-7B-Instruct-lm-evaluation \
+    --batch_size 12
+
+lm_eval --model hf \
+    --model_args pretrained="SuperCorrect-7B" \
+    --tasks minerva_math \
+    --log_samples \
+    --output_path SuperCorrect-7B-lm-evaluation \
+    --batch_size 12
+```
+**Evaluation results produced by lm-evaluation**
+
+| Tasks + Qwen2.5-Math-7B-Instruct    | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| ----------------------------------- | ------: | ------ | -----: | ----------- | ---- | -----: | ---- | -----: |
+| minerva_math                        |       1 | none   |        | exact_match | ↑    | 0.5034 | ±    | 0.0064 |
+| - minerva_math_algebra              |       1 | none   |      4 | exact_match | ↑    | 0.7009 | ±    | 0.0133 |
+| - minerva_math_counting_and_prob    |       1 | none   |      4 | exact_match | ↑    | 0.5232 | ±    | 0.0230 |
+| - minerva_math_geometry             |       1 | none   |      4 | exact_match | ↑    | 0.4635 | ±    | 0.0228 |
+| - minerva_math_intermediate_algebra |       1 | none   |      4 | exact_match | ↑    | 0.2237 | ±    | 0.0139 |
+| - minerva_math_num_theory           |       1 | none   |      4 | exact_match | ↑    | 0.4667 | ±    | 0.0215 |
+| - minerva_math_prealgebra           |       1 | none   |      4 | exact_match | ↑    | 0.7394 | ±    | 0.0149 |
+| - minerva_math_precalc              |       1 | none   |      4 | exact_match | ↑    | 0.2143 | ±    | 0.0176 |
+
+| Groups       | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| ------------ | ------: | ------ | ------ | ----------- | ---- | -----: | ---- | -----: |
+| minerva_math |       1 | none   |        | exact_match | ↑    | 0.5034 | ±    | 0.0064 |
+
+| Tasks + SuperCorrect-7B              | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| ------------------------------------ | ------: | ------ | -----: | ----------- | ---- | -----: | ---- | -----: |
+| minerva_math                         |       1 | none   |        | exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
+| - minerva_math_algebra               |       1 | none   |      4 | exact_match | ↑    | 0.7936 (**+0.0927**) | ±    | 0.0118 |
+| - minerva_math_counting_and_prob     |       1 | none   |      4 | exact_match | ↑    | 0.5802 (**+0.0570**) | ±    | 0.0227 |
+| - minerva_math_geometry              |       1 | none   |      4 | exact_match | ↑    | 0.5261 (**+0.0626**) | ±    | 0.0228 |
+| - minerva_math_intermediate_algebra  |       1 | none   |      4 | exact_match | ↑    | 0.4385 (**+0.2148**) | ±    | 0.0165 |
+| - minerva_math_num_theory            |       1 | none   |      4 | exact_match | ↑    | 0.6167 (**+0.1500**) | ±    | 0.0209 |
+| - minerva_math_prealgebra            |       1 | none   |      4 | exact_match | ↑    | 0.7715 (**+0.0321**) | ±    | 0.0142 |
+| - minerva_math_precalc               |       1 | none   |      4 | exact_match | ↑    | 0.4103 (**+0.1960**) | ±    | 0.0211 |
+
+| Groups       | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| ------------ | ------: | ------ | ------ | ----------- | ---- | -----: | ---- | -----: |
+| minerva_math |       1 | none   |        | exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
+
+### Qwen2.5-Math-Evaluation
+```bash
+export CUDA_VISIBLE_DEVICES="0"
+MODEL_NAME_OR_PATH="Qwen/Qwen2.5-Math-7B-Instruct"
+bash sh/eval.sh $PROMPT_TYPE $MODEL_NAME_OR_PATH
+
+export CUDA_VISIBLE_DEVICES="0"
+MODEL_NAME_OR_PATH="BitStarWalkin/SuperCorrect-7B"
+bash sh/eval.sh $PROMPT_TYPE $MODEL_NAME_OR_PATH
+```
+**Evaluation results produced by Qwen2.5-Math-Eval**
+| Model            | MATH Accuracy (%) |
+| ---------------- | ----------------- |
+| Qwen2.5-Math     | 80.6              |
+| **SuperCorrect**     | **82.1**              |
+| **Our Improvement**   | **+1.5**          |
+
+
 ## Citation
 
 ```bash
