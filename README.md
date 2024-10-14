@@ -5,7 +5,7 @@
 > Peking University, Skywork AI, UC Berkeley, Stanford University 
 
 <p align="left">
-  <a href='https://arxiv.org/abs/to be edited'>
+  <a href='https://arxiv.org/abs/2410.09008'>
   <img src='https://img.shields.io/badge/Arxiv-2410.09008-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
   <a href='https://huggingface.co/BitStarWalkin/SuperCorrect-7B'>
   <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
