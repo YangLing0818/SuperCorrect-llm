@@ -1,12 +1,12 @@
 ## SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights
 
-> [**SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights**](link)  
+> [**SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights**](https://arxiv.org/abs/2410.09008)  
 > [Ling Yang\*](https://yangling0818.github.io/), [Zhaochen Yu*](https://github.com/BitCodingWalkin), [Tianjun Zhang](https://tianjunz.github.io/), [Minkai Xu](https://minkaixu.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/),[Bin Cui](https://cuibinpku.github.io/), [Shuicheng Yan](https://yanshuicheng.info/)  
 > Peking University, Skywork AI, UC Berkeley, Stanford University 
 
 <p align="left">
   <a href='https://arxiv.org/abs/to be edited'>
-  <img src='https://img.shields.io/badge/Arxiv-2410.07171-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
+  <img src='https://img.shields.io/badge/Arxiv-2410.09008-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
   <a href='https://huggingface.co/BitStarWalkin/SuperCorrect-7B'>
   <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
   </p>
@@ -133,7 +133,7 @@ We evaluate our SupperCorrect-7B on two widely used English math benchmarks GSM8
 
 ![image](imgs/table.png)
 
-## Evaluation  
+### 1. Our evaluation  
 
 Here we provide two different evaluation methods: **online version**  which utilizes GPT-4o to conduct a more fair and robust judgement and **offline version**  which utilizes programming method to verify the final results. Both methods aim to provide a more accurate and strict evaluation results, as the final results in MATH dataset are not always numeric or pure expression. We now provide online version for evaluation, we will update soon for offline version.
 
@@ -146,9 +146,9 @@ bash evaluation.sh $API_KEY $MODEL_NAME_OR_PATH
 
 ```
 
-To present more comprehensive evaluation, we compare Qwen2.5-Math-7B-Instruct and our SuperCorrect-7B on MATH benchmark using different open-source evaluation framework including [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) and [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math). You can follow the command below and the instruction of corresponding repo to reproduce the results.
 
-### lm-evaluation-harness
+
+### 2. Evaluation with [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
 
 ```bash
 lm_eval --model hf \
@@ -165,11 +165,11 @@ lm_eval --model hf \
     --output_path SuperCorrect-7B-lm-evaluation \
     --batch_size 12
 ```
-**Evaluation results produced by lm-evaluation**
+Evaluation results produced by lm-evaluation:
 
-| Tasks + Qwen2.5-Math-7B-Instruct    | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| Qwen2.5-Math-7B-Instruct    | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
 | ----------------------------------- | ------: | ------ | -----: | ----------- | ---- | -----: | ---- | -----: |
-| minerva_math                        |       1 | none   |        | exact_match | ↑    | 0.5034 | ±    | 0.0064 |
+| minerva_math                        |       1 | none   |      4 | exact_match | ↑    | 0.5034 | ±    | 0.0064 |
 | - minerva_math_algebra              |       1 | none   |      4 | exact_match | ↑    | 0.7009 | ±    | 0.0133 |
 | - minerva_math_counting_and_prob    |       1 | none   |      4 | exact_match | ↑    | 0.5232 | ±    | 0.0230 |
 | - minerva_math_geometry             |       1 | none   |      4 | exact_match | ↑    | 0.4635 | ±    | 0.0228 |
@@ -178,13 +178,11 @@ lm_eval --model hf \
 | - minerva_math_prealgebra           |       1 | none   |      4 | exact_match | ↑    | 0.7394 | ±    | 0.0149 |
 | - minerva_math_precalc              |       1 | none   |      4 | exact_match | ↑    | 0.2143 | ±    | 0.0176 |
 
-| Groups       | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
-| ------------ | ------: | ------ | ------ | ----------- | ---- | -----: | ---- | -----: |
-| minerva_math |       1 | none   |        | exact_match | ↑    | 0.5034 | ±    | 0.0064 |
 
-| Tasks + SuperCorrect-7B              | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+
+| SuperCorrect-7B              | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
 | ------------------------------------ | ------: | ------ | -----: | ----------- | ---- | -----: | ---- | -----: |
-| minerva_math                         |       1 | none   |        | exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
+| minerva_math                         |       1 | none   |      4 | exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
 | - minerva_math_algebra               |       1 | none   |      4 | exact_match | ↑    | 0.7936 (**+0.0927**) | ±    | 0.0118 |
 | - minerva_math_counting_and_prob     |       1 | none   |      4 | exact_match | ↑    | 0.5802 (**+0.0570**) | ±    | 0.0227 |
 | - minerva_math_geometry              |       1 | none   |      4 | exact_match | ↑    | 0.5261 (**+0.0626**) | ±    | 0.0228 |
@@ -193,11 +191,13 @@ lm_eval --model hf \
 | - minerva_math_prealgebra            |       1 | none   |      4 | exact_match | ↑    | 0.7715 (**+0.0321**) | ±    | 0.0142 |
 | - minerva_math_precalc               |       1 | none   |      4 | exact_match | ↑    | 0.4103 (**+0.1960**) | ±    | 0.0211 |
 
-| Groups       | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
-| ------------ | ------: | ------ | ------ | ----------- | ---- | -----: | ---- | -----: |
-| minerva_math |       1 | none   |        | exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
 
-### Qwen2.5-Math-Evaluation
+| Summary       | Version | Filter | n-shot | Metric      |      |  Value |      | Stderr |
+| ------------ | ------: | ------ | ------ | ----------- | ---- | -----: | ---- | -----: |
+| Qwen2.5-Math-7B-Instruct |       1 | none   |       4| exact_match | ↑    | 0.5034 | ±    | 0.0064 |
+| SuperCorrect-7B  |       1 | none   |       4| exact_match | ↑    | 0.6188 (**+0.1154**) | ±    | 0.0065 |
+
+### 3. Evaluation with [Qwen2.5-Math-Evaluation](https://github.com/QwenLM/Qwen2.5-Math)
 ```bash
 export CUDA_VISIBLE_DEVICES="0"
 MODEL_NAME_OR_PATH="Qwen/Qwen2.5-Math-7B-Instruct"
@@ -207,7 +207,7 @@ export CUDA_VISIBLE_DEVICES="0"
 MODEL_NAME_OR_PATH="BitStarWalkin/SuperCorrect-7B"
 bash sh/eval.sh $PROMPT_TYPE $MODEL_NAME_OR_PATH
 ```
-**Evaluation results produced by Qwen2.5-Math-Eval**
+Evaluation results produced by Qwen2.5-Math-Eval:
 | Model            | MATH Accuracy (%) |
 | ---------------- | ----------------- |
 | Qwen2.5-Math     | 80.6              |
@@ -218,16 +218,17 @@ bash sh/eval.sh $PROMPT_TYPE $MODEL_NAME_OR_PATH
 ## Citation
 
 ```bash
-@article{yang2024super,
+@article{yang2024supercorrect,
 title={SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights}
-  author={},
-  journal={arXiv preprint arXiv:2410.},
+  author={Yang, Ling and Yu, Zhaochen and Zhang, Tianjun and Xu, Minkai and Gonzalez, Joseph E and Cui, Bin and Yan, Shuicheng},
+  journal={arXiv preprint arXiv:2410.09008},
   year={2024}
 }
+
 @article{yang2024buffer,
   title={Buffer of Thoughts: Thought-Augmented Reasoning with Large Language Models},
   author={Yang, Ling and Yu, Zhaochen and Zhang, Tianjun and Cao, Shiyi and Xu, Minkai and Zhang, Wentao and Gonzalez, Joseph E and Cui, Bin},
-  journal={arXiv preprint arXiv:2406.04271},
+  journal={Advances in Neural Information Processing Systems},
   year={2024}
 }
 ```
