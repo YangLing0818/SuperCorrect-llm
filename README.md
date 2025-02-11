@@ -27,15 +27,6 @@ This repo provides the official implementation of [SuperCorrect](https://openrev
 | AMC2023        |      **85.0**      |      80.0       |         90.0          |        95.0        |          -          |    47.5    |
 
 
-## Examples
-
-![image](imgs/example1.png)
-
-<div align="left">
-<b>
-🚨 For more concise and clear presentation, we omit some XML tags  
-</b>
-</div>
 
 ## Quick Start
 
