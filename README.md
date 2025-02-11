@@ -1,12 +1,10 @@
 ## [ICLR 2025] SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights
 
-> [**SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights**](https://arxiv.org/abs/2410.09008)  
+> [**SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights**](https://openreview.net/forum?id=PyjZO7oSw2)  
 > [Ling Yang\*](https://yangling0818.github.io/), [Zhaochen Yu*](https://github.com/BitCodingWalkin), [Tianjun Zhang](https://tianjunz.github.io/), [Minkai Xu](https://minkaixu.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/),[Bin Cui](https://cuibinpku.github.io/), [Shuicheng Yan](https://yanshuicheng.info/)  
 > Peking University, Skywork AI, UC Berkeley, Stanford University 
 
 <p align="left">
-  <a href='https://arxiv.org/abs/2410.09008'>
-  <img src='https://img.shields.io/badge/Arxiv-2410.09008-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
   <a href='https://huggingface.co/BitStarWalkin/SuperCorrect-7B'>
   <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
   </p>
@@ -15,11 +13,18 @@
 
 ![image](imgs/intro.png)
 
-This repo provides the official implementation of SuperCorrect,  a novel two-stage fine-tuning method for improving both reasoning accuracy and self-correction ability for LLMs. Notably, our **SupperCorrect-7B** model significantly surpasses powerful **DeepSeekMath-7B by 7.8%/5.3% and Qwen2.5-Math-7B by 15.1%/6.3% on MATH/GSM8K benchmarks**, achieving new SOTA performance among all 7B models.
+This repo provides the official implementation of [SuperCorrect](https://openreview.net/forum?id=PyjZO7oSw2),  a novel two-stage fine-tuning method for improving both reasoning accuracy and self-correction ability for LLMs. We incorporate LLMs with our pre-defined hierarchical thought template ([Buffer of Thought (BoT)](https://github.com/YangLing0818/buffer-of-thought-llm)) to conduct more deliberate reasoning than conventional CoT. 
 
+## 📢 News
+[2025.2] 🎉 We release [ReasonFlux](https://github.com/Gen-Verse/ReasonFlux), a revolutionary inference-scaling paradigm with a hierarchical RL algorithm: enpowering **a 32B model with 500 thought templates to outperform o1-preview and DeepSeek-V3** in reasoning tasks.
 
-
-🚨 Unlike other LLMs, we incorporate LLMs with our pre-defined hierarchical thought template ([Buffer of Thought (BoT)](https://github.com/YangLing0818/buffer-of-thought-llm)) to conduct more deliberate reasoning than conventional CoT. It should be noted that our evaluation methods relies on pure mathematical reasoning abilities of LLMs, instead of leverage other programming methods such as PoT and ToRA.
+| Task           | **ReasonFlux 32B** | **DeepSeek V3** | **OpenAI o1-preview** | **OpenAI o1-mini** | **QWQ 32B-preview** | **GPT 4o** |
+| :------------- | :----------------: | :-------------: | :-------------------: | :----------------: | :-----------------: | :--------: |
+| MATH           |      **91.2**      |      90.2       |         85.5          |        90.0        |        90.6         |    76.6    |
+| AIME 2024      |      **56.7**      |      39.2       |         44.6          |        56.7        |        50.0         |    9.3     |
+| Olympiad Bench |      **63.3**      |      55.4       |           -           |        65.3        |        61.2         |    43.3    |
+| GaokaoEn 2023  |      **83.6**      |        -        |         71.4          |        78.4        |        65.3         |    67.5    |
+| AMC2023        |      **85.0**      |      80.0       |         90.0          |        95.0        |          -          |    47.5    |
 
 
 ## Examples
