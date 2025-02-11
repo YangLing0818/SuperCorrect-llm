@@ -1,9 +1,5 @@
 ## [ICLR 2025] SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights
 
-> [**SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights**](https://openreview.net/forum?id=PyjZO7oSw2)  
-> [Ling Yang\*](https://yangling0818.github.io/), [Zhaochen Yu*](https://github.com/BitCodingWalkin), [Tianjun Zhang](https://tianjunz.github.io/), [Minkai Xu](https://minkaixu.com/), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/),[Bin Cui](https://cuibinpku.github.io/), [Shuicheng Yan](https://yanshuicheng.info/)  
-> Peking University, Skywork AI, UC Berkeley, Stanford University 
-
 <p align="left">
   <a href='https://huggingface.co/BitStarWalkin/SuperCorrect-7B'>
   <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
@@ -123,11 +119,6 @@ for output in outputs:
 
 Here we also provide inference code with [vLLM](https://github.com/vllm-project/vllm) . vLLM is a fast and easy-to-use library for LLM inference and serving.
 
-## Performance
-
-We evaluate our SupperCorrect-7B on two widely used English math benchmarks GSM8K and MATH. All evaluations are tested with our evaluation method which is zero-shot hierarchical thought based prompting.
-
-![image](imgs/table.png)
 
 ### 1. Our evaluation  
 
@@ -214,11 +205,11 @@ Evaluation results produced by Qwen2.5-Math-Eval:
 ## Citation
 
 ```bash
-@article{yang2024supercorrect,
+@inproceedings{yang2025supercorrect,
 title={SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights}
   author={Yang, Ling and Yu, Zhaochen and Zhang, Tianjun and Xu, Minkai and Gonzalez, Joseph E and Cui, Bin and Yan, Shuicheng},
-  journal={arXiv preprint arXiv:2410.09008},
-  year={2024}
+  booktitle={International Conference on Learning Representations},
+  year={2025}
 }
 
 @article{yang2024buffer,
