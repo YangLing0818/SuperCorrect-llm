@@ -206,7 +206,7 @@ Evaluation results produced by Qwen2.5-Math-Eval:
 
 ```bash
 @inproceedings{yang2025supercorrect,
-title={SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights}
+  title={SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights},
   author={Yang, Ling and Yu, Zhaochen and Zhang, Tianjun and Xu, Minkai and Gonzalez, Joseph E and Cui, Bin and Yan, Shuicheng},
   booktitle={International Conference on Learning Representations},
   year={2025}
