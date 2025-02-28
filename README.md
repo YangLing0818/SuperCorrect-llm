@@ -1,4 +1,4 @@
-## [ICLR 2025] SuperCorrect: Supervising and Correcting Language Models with Error-Driven Insights
+## [ICLR 2025] SuperCorrect: Advancing Small LLM Reasoning with Thought Template Distillation and Self-Correction
 
 <p align="left">
   <a href='https://huggingface.co/BitStarWalkin/SuperCorrect-7B'>
