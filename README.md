@@ -12,6 +12,15 @@
 This repo provides the official implementation of [SuperCorrect](https://openreview.net/forum?id=PyjZO7oSw2),  a novel two-stage fine-tuning method for improving both reasoning accuracy and self-correction ability for LLMs. We incorporate LLMs with our pre-defined hierarchical thought template ([Buffer of Thought (BoT)](https://github.com/YangLing0818/buffer-of-thought-llm)) to conduct more deliberate reasoning than conventional CoT. 
 
 ## 📢 News
+[2025.3] 🎉We release [ReasonFlux-F1-32B](https://huggingface.co/Gen-Verse/ReasonFlux-F1), [ReasonFlux-F1-14B](https://huggingface.co/Gen-Verse/ReasonFlux-F1-14B), [ReasonFlux-F1-7B](https://huggingface.co/Gen-Verse/ReasonFlux-F1-7B), a series of SOTA-level reasoning LLMs by leveraging the template-augmented reasoning trajectories collected from our [ReasonFlux-Zero](https://github.com/Gen-Verse/ReasonFlux). For the training and evaluation scripts, please refer to [Reasonflux-F1](https://github.com/Gen-Verse/ReasonFlux/tree/main/reasonflux-f1) for detail.
+
+| Task/Pass@1           | [**ReasonFlux-F1-32B**](https://huggingface.co/Gen-Verse/ReasonFlux-F1) | **ReasonFlux-Zero-32B** | **DeepSeek-R1-Distill-32B** | **o1-mini** | **LIMO -32B** | **s1-32B** |
+| :------------- | :----------------: | :-------------: | :-------------------: | :-----------------: | :--------: | :--------: |
+| MATH500           |      **96.0**      |      91.2      |      94.3      |        90.0        |        90.6         |    93.0    |
+| AIME 2024      |      **76.7**      |      56.7      |      72.6      |        56.7        |        50.0         |    56.7    |
+| AIME 2025    | **53.3**         | 37.2                     |        46.67        |         50.8         |        37.2         |    49.3    |
+| GPQA-Diamond | **67.2**         | 61.2                     |      62.1      |        60.0        |        65.2         |    59.6    |
+
 [2025.2] 🎉 We release [ReasonFlux](https://github.com/Gen-Verse/ReasonFlux), a revolutionary inference-scaling paradigm with a hierarchical RL algorithm: enpowering **a 32B model with 500 thought templates to outperform o1-preview and DeepSeek-V3** in reasoning tasks.
 
 | Task           | **ReasonFlux 32B** | **DeepSeek V3** | **OpenAI o1-preview** | **OpenAI o1-mini** | **QWQ 32B-preview** | **GPT 4o** |
